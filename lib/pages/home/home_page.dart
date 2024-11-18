@@ -16,46 +16,49 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: Text("기차 예매")),
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              FromToBox(
-                onDepartureChanged: (value) {
-                  setState(() {
-                    departureStation = value;
-                  });
-                },
-                onArrivalChanged: (value) {
-                  setState(() {
-                    arrivalStation = value;
-                  });
-                },
-              ),
-              SizedBox(height: 20),
-              Container(
-                  width: double.infinity,
-                  height: 56,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        if (departureStation != "선택" &&
-                            arrivalStation != "선택") {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SeatsPage(
-                                    from: departureStation, to: arrivalStation),
-                              ));
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20))),
-                      child: Text("좌석 선택", style: TextStyle(fontSize: 18))))
-            ],
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FromToBox(
+                  onDepartureChanged: (value) {
+                    setState(() {
+                      departureStation = value;
+                    });
+                  },
+                  onArrivalChanged: (value) {
+                    setState(() {
+                      arrivalStation = value;
+                    });
+                  },
+                ),
+                SizedBox(height: 20),
+                Container(
+                    width: double.infinity,
+                    height: 56,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          if (departureStation != "선택" &&
+                              arrivalStation != "선택") {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SeatsPage(
+                                      from: departureStation,
+                                      to: arrivalStation),
+                                ));
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20))),
+                        child: Text("좌석 선택", style: TextStyle(fontSize: 18))))
+              ],
+            ),
           ),
         ),
       ),

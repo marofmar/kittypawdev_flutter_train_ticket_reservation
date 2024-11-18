@@ -28,48 +28,50 @@ class _SeatsPageState extends State<SeatsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("좌석 선택")),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(widget.from,
-                      style: TextStyle(
-                        color: Theme.of(context).highlightColor,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      )),
-                  Icon(Icons.arrow_circle_right_outlined, size: 30),
-                  Text(widget.to,
-                      style: TextStyle(
-                        color: Theme.of(context).highlightColor,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ],
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Label(context: context, text: " 선택됨", isSelected: true),
-                  SizedBox(width: 20),
-                  Label(context: context, text: " 선택 안 됨", isSelected: false),
-                ],
-              ),
-              // TODO: 칼럼 번호 ABCD
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(widget.from,
+                        style: TextStyle(
+                          color: Theme.of(context).highlightColor,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Icon(Icons.arrow_circle_right_outlined, size: 30),
+                    Text(widget.to,
+                        style: TextStyle(
+                          color: Theme.of(context).highlightColor,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        )),
+                  ],
+                ),
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Label(context: context, text: " 선택됨", isSelected: true),
+                    SizedBox(width: 20),
+                    Label(context: context, text: " 선택 안 됨", isSelected: false),
+                  ],
+                ),
+                // TODO: 칼럼 번호 ABCD
 
-              // TODO: 좌석 좌르르르르르
-              SizedBox(height: 20),
-              Expanded(
-                  child: SeatSelectBox(selectedRow, selectedCol, onSelected)),
+                // TODO: 좌석 좌르르르르르
+                SizedBox(height: 20),
+                Expanded(
+                    child: SeatSelectBox(selectedRow, selectedCol, onSelected)),
 
-              SizedBox(height: 10),
-              confirmButton()
-            ],
+                SizedBox(height: 10),
+                confirmButton()
+              ],
+            ),
           ),
         ));
   }
