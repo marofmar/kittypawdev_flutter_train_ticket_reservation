@@ -69,7 +69,7 @@ class _SeatsPageState extends State<SeatsPage> {
                     child: SeatSelectBox(selectedRow, selectedCol, onSelected)),
 
                 SizedBox(height: 10),
-                confirmButton()
+                confirmButton(selectedRow, selectedCol)
               ],
             ),
           ),

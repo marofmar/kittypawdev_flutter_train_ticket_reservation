@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class confirmButton extends StatelessWidget {
+  int? selectedRow;
+  int? selectedCol;
+  confirmButton(this.selectedCol, this.selectedRow);
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -14,7 +17,9 @@ class confirmButton extends StatelessWidget {
                   builder: (context) {
                     return CupertinoAlertDialog(
                         title: Text("예매 하시겠습니까?"),
-                        content: Text("좌석 선택 ~"),
+                        content: Text(selectedCol == null && selectedRow == null
+                            ? "선택된 좌석 없음"
+                            : "좌석 $selectedRow-$selectedCol"), // SelectedRow 대신 ABCD
                         actions: [
                           CupertinoDialogAction(
                               isDefaultAction: true,
