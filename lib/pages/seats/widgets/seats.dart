@@ -11,16 +11,18 @@ class SeatSelectBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(rowNum, (index) {
-        return Column(
-          children: [
-            row(index + 1),
-            SizedBox(height: 10), // 행 간 간격
-          ],
-        );
-      }),
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(rowNum, (index) {
+          return Column(
+            children: [
+              row(index + 1),
+              SizedBox(height: 10), // 행 간 간격
+            ],
+          );
+        }),
+      ),
     );
   }
 
