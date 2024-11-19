@@ -62,9 +62,30 @@ class _SeatsPageState extends State<SeatsPage> {
                   ],
                 ),
                 // TODO: 칼럼 번호 ABCD
-
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(5, (index) {
+                      final List<String> columnNames = [
+                        'A',
+                        'B',
+                        ' ',
+                        'C',
+                        'D'
+                      ];
+                      if (index == 2) {
+                        return SizedBox(width: 33, height: 33);
+                      }
+                      return Container(
+                          width: 55,
+                          height: 33,
+                          margin: const EdgeInsets.symmetric(horizontal: 6),
+                          child: Center(child: Text(columnNames[index])));
+                    })
+                  ],
+                ),
                 // TODO: 좌석 좌르르르르르
-                SizedBox(height: 20),
+                //SizedBox(height: 20),
                 Expanded(
                     child: SeatSelectBox(selectedRow, selectedCol, onSelected)),
 
