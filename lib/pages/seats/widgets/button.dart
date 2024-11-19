@@ -5,8 +5,16 @@ class confirmButton extends StatelessWidget {
   int? selectedRow;
   int? selectedCol;
   confirmButton(this.selectedCol, this.selectedRow);
+
   @override
   Widget build(BuildContext context) {
+    final Map<int, String> rowMap = {
+      1: 'A',
+      2: 'B',
+      4: 'C',
+      5: 'D',
+    };
+    String rowLetter = rowMap[selectedRow] ?? " ";
     return SizedBox(
         width: double.infinity,
         height: 56,
@@ -19,7 +27,7 @@ class confirmButton extends StatelessWidget {
                         title: Text("예매 하시겠습니까?"),
                         content: Text(selectedCol == null && selectedRow == null
                             ? "선택된 좌석 없음"
-                            : "좌석 $selectedRow-$selectedCol"), // SelectedRow 대신 ABCD
+                            : "좌석 $rowLetter-$selectedCol"), // SelectedRow 대신 ABCD
                         actions: [
                           CupertinoDialogAction(
                               isDefaultAction: true,
